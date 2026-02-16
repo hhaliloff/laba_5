@@ -60,7 +60,7 @@ public class Ticket {
         return venue;
     }
 
-    public void getName(String name) {
+    public void setName(String name) {
         if (name == null || name.isEmpty()) {
             throw new IllegalArgumentException("Поле name не может быть null или пустым");
         }
