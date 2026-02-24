@@ -21,6 +21,7 @@ class Main {
         String xml = XmlCoder.code(test_ticket);
         System.out.println(xml);
         //System.out.println(XmlCoder.decode(xml));
+
         System.out.println();
 
         while (running) {
