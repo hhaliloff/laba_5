@@ -6,7 +6,7 @@ public class Venue {
     private Address address; //Поле может быть null
 
 
-    Venue(Integer id, String name, int capacity, VenueType type, Address address) {
+    Venue(String name, int capacity, VenueType type, Address address) {
         this.id = id + 1;
         setName(name);
         setCapacity(capacity);
