@@ -12,7 +12,7 @@ public class Ticket {
     private TicketType type; //Поле не может быть null
     private Venue venue;
 
-    Ticket(Integer id, String name, Coordinates coordinates, java.time.LocalDate creationDate, float price, String comment, boolean refundable, TicketType type, Venue venue) {
+    Ticket(String name, Coordinates coordinates, java.time.LocalDate creationDate, float price, String comment, boolean refundable, TicketType type, Venue venue) {
         this.id = id + 1;
         this.name = name;
         this.coordinates = coordinates;
