@@ -1,3 +1,5 @@
+package CollectionClasses;
+
 public class Venue {
     private static Integer id = 1; //Поле не может быть null, Значение поля должно быть больше 0, Значение этого поля должно быть уникальным, Значение этого поля должно генерироваться автоматически
     private String name; //Поле не может быть null, Строка не может быть пустой
@@ -6,7 +8,7 @@ public class Venue {
     private Address address; //Поле может быть null
 
 
-    Venue(String name, int capacity, VenueType type, Address address) {
+    public Venue(String name, int capacity, VenueType type, Address address) {
         this.id = id + 1;
         setName(name);
         setCapacity(capacity);

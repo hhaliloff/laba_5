@@ -1,10 +1,12 @@
+package CollectionClasses;
+
 public class Location {
     private Float x; //Поле не может быть null
     private int y;
     private double z;
     private String name; //Поле может быть null
 
-    Location(Float x, int y, double z, String name) {
+    public Location(Float x, int y, double z, String name) {
         setX(x);
         this.y = y;
         this.z = z;

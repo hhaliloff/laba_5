@@ -1,8 +1,10 @@
+package CollectionClasses;
+
 public class Coordinates {
     private long x; //Максимальное значение поля: 104
     private int y;
 
-    Coordinates(long x, int y) {
+    public Coordinates(long x, int y) {
         setX(x);
         this.y = y;
     }

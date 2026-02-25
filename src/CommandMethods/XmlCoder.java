@@ -1,3 +1,7 @@
+package CommandMethods;
+
+import CollectionClasses.*;
+
 public class XmlCoder {
     public static String code(Ticket ticket) {
         int ticket_id = ticket.getId();
@@ -58,6 +62,7 @@ public class XmlCoder {
                         </address>
                     </venue>
                 </ticket>
+                
                 """.formatted(ticket_id, ticket_name, x, y, creationDate, price, comment, refundable, type, venue_id, venue_name, capacity, venue_type, street, location_x, location_y, location_z, location_name);
 
         return xml;
@@ -67,7 +72,7 @@ public class XmlCoder {
         int ticket_id = Integer.parseInt(xml.substring(xml.indexOf("<id>")+4, xml.indexOf("</id>")));
         String ticket_name = xml.substring(xml.indexOf("<name>")+6, xml.indexOf("</name>"));
 
-        xml.substring(xml.indexOf("</name>")+7);
+        xml = xml.substring(xml.indexOf("</name>")+7);
 
         long x = Long.parseLong(xml.substring(xml.indexOf("<x>")+3, xml.indexOf("</x>")));
         int y = Integer.parseInt(xml.substring(xml.indexOf("<y>")+3, xml.indexOf("</y>")));
@@ -79,12 +84,12 @@ public class XmlCoder {
         String venue_name = xml.substring(xml.indexOf("<name>")+6, xml.indexOf("</name>"));
         int capacity = Integer.parseInt(xml.substring(xml.indexOf("<capacity>")+10, xml.indexOf("</capacity>")));
 
-        xml.substring(xml.indexOf("<capacity>")+10);
+        xml = xml.substring(xml.indexOf("<capacity>")+10);
 
         VenueType venue_type = VenueType.valueOf(xml.substring(xml.indexOf("<type>")+6, xml.indexOf("</type>")));
         String street = xml.substring(xml.indexOf("<street>")+8, xml.indexOf("</street>"));
 
-        xml.substring(xml.indexOf("<street>")+8);
+        xml = xml.substring(xml.indexOf("<street>")+8);
 
         Float location_x = Float.parseFloat(xml.substring(xml.indexOf("<x>")+3, xml.indexOf("</x>")));
         int location_y = Integer.parseInt(xml.substring(xml.indexOf("<y>")+3, xml.indexOf("</y>")));
