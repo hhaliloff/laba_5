@@ -1,8 +1,9 @@
+package CollectionClasses;
+
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 
 public class Ticket {
-    private Integer id = 1; //Поле не может быть null, Значение поля должно быть больше 0, Значение этого поля должно быть уникальным, Значение этого поля должно генерироваться автоматически
+    private Integer id = -1; //Поле не может быть null, Значение поля должно быть больше 0, Значение этого поля должно быть уникальным, Значение этого поля должно генерироваться автоматически
     private String name; //Поле не может быть null, Строка не может быть пустой
     private Coordinates coordinates; //Поле не может быть null
     private java.time.LocalDate creationDate; //Поле не может быть null, Значение этого поля должно генерироваться автоматически
@@ -12,7 +13,7 @@ public class Ticket {
     private TicketType type; //Поле не может быть null
     private Venue venue;
 
-    Ticket(String name, Coordinates coordinates, java.time.LocalDate creationDate, float price, String comment, boolean refundable, TicketType type, Venue venue) {
+    public Ticket(String name, Coordinates coordinates, java.time.LocalDate creationDate, float price, String comment, boolean refundable, TicketType type, Venue venue) {
         this.id = id + 1;
         this.name = name;
         this.coordinates = coordinates;
@@ -58,6 +59,10 @@ public class Ticket {
 
     public Venue getVenue() {
         return venue;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public void setName(String name) {

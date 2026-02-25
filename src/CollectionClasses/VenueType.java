@@ -1,3 +1,5 @@
+package CollectionClasses;
+
 public enum VenueType {
     PUB,
     BAR,
