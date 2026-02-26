@@ -1,3 +1,6 @@
+/**
+ * Класс для создания нового Ticket через ввод с клавиатуры.
+ */
 package CommandMethods;
 
 import CollectionClasses.*;
@@ -19,7 +22,7 @@ public class Add {
         int venue_capacity = ErrorCatcher.moreZero(scanner, "Введите вместимость места проведения: ");
         VenueType venue_type = ErrorCatcher.notVenueType(scanner, "Введите тип места проведения");
         String address_street = ErrorCatcher.notEmpty(scanner, "Введите адрес места проведения: ");
-        float location_x = Float.parseFloat(ErrorCatcher.notNull(scanner, "Введите координату x для места встречи: "));
+        float location_x = (float) (ErrorCatcher.notInt(scanner, "Введите координату x для места встречи: "));
         int location_y = ErrorCatcher.notInt(scanner, "Введите координату y для места встречи: ");
         double location_z = (ErrorCatcher.notInt(scanner, "Введите координату z для места встречи: "));
         String location_name = ErrorCatcher.normalInput(scanner, "Введите город для места встречи: ");

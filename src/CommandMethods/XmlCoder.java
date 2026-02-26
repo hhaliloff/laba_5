@@ -1,3 +1,7 @@
+/**
+ * Класс для перевода Ticket в текст и обратно.
+ * Используется для сохранения в файл.
+ */
 package CommandMethods;
 
 import CollectionClasses.*;

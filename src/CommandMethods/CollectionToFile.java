@@ -1,3 +1,7 @@
+/**
+ * Класс для сохранения коллекции Ticket в файл и загрузки из файла.
+ * Используется простой XML-подобный текст.
+ */
 package CommandMethods;
 
 import CollectionClasses.Ticket;

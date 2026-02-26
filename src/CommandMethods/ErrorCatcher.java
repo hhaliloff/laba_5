@@ -1,3 +1,7 @@
+/**
+ * Класс для проверки правильности ввода пользователя.
+ * Если введено неправильно — просит ввести снова.
+ */
 package CommandMethods;
 
 import CollectionClasses.TicketType;

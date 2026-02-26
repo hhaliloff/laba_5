@@ -1,3 +1,6 @@
+/**
+ * Класс для обновления id у всех билетов.
+ */
 package CommandMethods;
 
 import CollectionClasses.Ticket;
