@@ -1,2 +1,60 @@
 <collection>
+<ticket>
+    <id>0</id>
+    <name>dh </name>
+    <coordinates>
+        <x>34</x>
+        <y>34</y>
+    </coordinates>
+    <creationDate>2026-02-26</creationDate>
+    <price>432.000000</price>
+    <comment>sf </comment>
+    <refundable>false</refundable>
+    <type>USUAL</type>
+    <venue>
+        <id>3</id>
+        <name>verfg</name>
+        <capacity>34</capacity>
+        <type>PUB</type>
+        <address>
+            <street>rfgv</street>
+            <town>
+                <x>543.000000</x>
+                <y>4</y>
+                <z>43.000000</z>
+                <name>dgfbdx</name>
+            </town>
+        </address>
+    </venue>
+</ticket>
+
+<ticket>
+    <id>0</id>
+    <name>efw</name>
+    <coordinates>
+        <x>32</x>
+        <y>32</y>
+    </coordinates>
+    <creationDate>2026-02-26</creationDate>
+    <price>320000.000000</price>
+    <comment>sfrfg</comment>
+    <refundable>true</refundable>
+    <type>VIP</type>
+    <venue>
+        <id>3</id>
+        <name>rsgvf</name>
+        <capacity>435</capacity>
+        <type>BAR</type>
+        <address>
+            <street>fesrcv</street>
+            <town>
+                <x>34.000000</x>
+                <y>34</y>
+                <z>34.000000</z>
+                <name>sfdv</name>
+            </town>
+        </address>
+    </venue>
+</ticket>
+
 </collection>
