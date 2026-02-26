@@ -1,25 +1,34 @@
 import CollectionClasses.*;
 import CommandMethods.*;
-
-import java.io.IOException;
+import java.io.*;
 import java.time.LocalDate;
 import java.util.*;
 import java.util.concurrent.atomic.AtomicReference;
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
 
 class Main {
     public static void main(String[] args) throws IOException {
         LinkedList<Ticket> collection = new LinkedList<>();
-        String path = System.getenv("TICKETS_FILE");
+        String path = System.getenv("TICKETS_FILE");  // Пытаемся получить путь из переменной окружения
         Scanner scanner = new Scanner(System.in);
+
         AtomicReference<Boolean> running = new AtomicReference<>(true);
 
-        //чтение файла
+        // Если переменная окружения не установлена, запрашиваем путь к файлу у пользователя
+        if (path == null) {
+            System.out.println("Переменная окружения TICKETS_FILE не установлена.");
+            System.out.println("Введите путь к файлу: ");
+            path = scanner.nextLine();
+        }
+
+        if (path == null || path.isEmpty()) {
+            System.out.println("Путь к файлу не был задан. Завершаем выполнение программы.");
+            return;
+        }
+
+        // Чтение файла
         CollectionToFile.file_to_collection(collection, path);
 
-        //тест(удалить)
+        // Тестовые данные (удалить)
         Location test_location = new Location(100.0f, 99, 834, "Lenina");
         Address test_address = new Address("Lenina_A", test_location);
         Venue test_venue = new Venue("Lenina_V", 1000, VenueType.BAR, test_address);
@@ -29,6 +38,7 @@ class Main {
 
         String test_string = XmlCoder.code(test_ticket) + XmlCoder.code(test_ticket);
 
+        // Создание и регистрация команд
         Map<String, Runnable> commands = new HashMap<>();
         commands.put("exit", () -> running.set(false));
         commands.put("add", () -> {
@@ -164,6 +174,11 @@ class Main {
             }
         });
 
+        // Запуск метода executeScript
+        System.out.println("Введите путь к файлу скрипта (например, script.txt): ");
+        String scriptFilePath = scanner.nextLine();
+        executeScript(scriptFilePath, collection, commands);
+
         // Интерфейс
         while (running.get()) {
             System.out.println("Введите команду > ");
@@ -175,23 +190,24 @@ class Main {
             }
         }
     }
-        public static void executeScript(String fileName, LinkedList<Ticket> collection, Map<String, Runnable> commands) {
-            try (BufferedReader br = new BufferedReader(new FileReader(fileName))) {
-                String command;
-                while ((command = br.readLine()) != null) {
-                    command = command.trim();
-                    if (!command.isEmpty()) {
-                        System.out.println("Выполняется команда из скрипта: " + command);
-                        if (commands.containsKey(command)) {
-                            commands.get(command).run();
-                        } else {
-                            System.out.println("Неизвестная команда: " + command);
-                        }
+
+    // Метод для выполнения скрипта
+    public static void executeScript(String fileName, LinkedList<Ticket> collection, Map<String, Runnable> commands) {
+        try (BufferedReader br = new BufferedReader(new FileReader(fileName))) {
+            String command;
+            while ((command = br.readLine()) != null) {
+                command = command.trim();  // Убираем лишние пробелы
+                if (!command.isEmpty()) {
+                    System.out.println("Выполняется команда из скрипта: " + command);
+                    if (commands.containsKey(command)) {
+                        commands.get(command).run();
+                    } else {
+                        System.out.println("Неизвестная команда: " + command);
                     }
                 }
-            } catch (IOException e) {
-                System.out.println("Ошибка при чтении файла: " + e.getMessage());
             }
+        } catch (IOException e) {
+            System.out.println("Ошибка при чтении файла: " + e.getMessage());
         }
     }
-
+}
