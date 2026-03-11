@@ -12,16 +12,11 @@ import java.util.List;
 
 public class CollectionToFile {
     public static void collection_to_file(LinkedList<Ticket> collection, String path) throws IOException {
-        String file_xml_out = """
-                <collection>
-                    """;
+        String file_xml_out = "";
         for (Ticket ticket : collection) {
             XmlCoder.code(ticket);
             file_xml_out = file_xml_out + XmlCoder.code(ticket);
         }
-        file_xml_out = file_xml_out + """
-                </collection>
-                """;
         FileWriterReader.write(file_xml_out, path);
     }
 
@@ -29,10 +24,10 @@ public class CollectionToFile {
         String file_xml = FileWriterReader.read(path);
         List<String> xml_codes = new LinkedList<>();
 
-        while (file_xml.contains("<ticket>")) {
-            String one_code = file_xml.substring(file_xml.indexOf("<ticket>"), file_xml.indexOf("</ticket>"));
+        while (file_xml.contains("<CollectionClasses.Ticket>")) {
+            String one_code = file_xml.substring(file_xml.indexOf("<CollectionClasses.Ticket>"), file_xml.indexOf("</CollectionClasses.Ticket>")+27);
             xml_codes.add(one_code);
-            file_xml = file_xml.substring(file_xml.indexOf("</ticket>")+9);
+            file_xml = file_xml.substring(file_xml.indexOf("</CollectionClasses.Ticket>")+27);
         }
 
         for (String code : xml_codes) {
