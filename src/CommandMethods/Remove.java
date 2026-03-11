@@ -1,3 +1,6 @@
+/**
+ * Класс для удаления билета из коллекции по id.
+ */
 package CommandMethods;
 
 import CollectionClasses.Ticket;

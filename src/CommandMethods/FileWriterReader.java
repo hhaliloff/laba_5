@@ -1,3 +1,6 @@
+/**
+ * Класс для чтения и записи текста в файл.
+ */
 package CommandMethods;
 
 import java.io.*;

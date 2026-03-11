@@ -1,3 +1,8 @@
+/**
+ * Главный класс программы.
+ * Здесь запускается программа и обрабатываются команды.
+ */
+
 import CollectionClasses.*;
 import CommandMethods.*;
 
@@ -28,6 +33,13 @@ class Main {
                 collection.add(ticket);
                 IdController.ChangeIds(collection);
                 System.out.println("билет успешно добавлен в коллекцию!");
+                break;
+
+            case "add_random":
+                Ticket random_ticket = RandomObject.create_random();
+                collection.add(random_ticket);
+                IdController.ChangeIds(collection);
+                System.out.println("билет с рандомными полями успешно добавлен в коллекцию!");
                 break;
 
             case "update":
@@ -102,6 +114,7 @@ class Main {
                         info : вывести в стандартный поток вывода информацию о коллекции (тип, дата инициализации, количество элементов)
                         show : вывести в стандартный поток вывода все элементы коллекции в строковом представлении
                         add {element} : добавить новый элемент в коллекцию
+                        add random : добавить новый элемент с рандомными полями в коллекцию
                         update id {element} : обновить значение элемента коллекции, id которого равен заданному
                         remove_by_id id : удалить элемент из коллекции по его id
                         clear : очистить коллекцию
@@ -150,6 +163,7 @@ class Main {
 
             case "shuffle":
                 Collections.shuffle(collection);
+                IdController.ChangeIds(collection);
                 System.out.println("Коллекция перемешана!");
                 break;
 
@@ -264,6 +278,30 @@ class Main {
         String path = System.getenv("TICKETS_FILE");
         Scanner scanner = new Scanner(System.in);
         boolean running = true;
+
+
+        // test
+
+        /*
+        ArrayList<Ticket> testTickets = new ArrayList<>();
+        for (int i = 0; i < 10; i++) {
+            Ticket testTicket = RandomObject.create_random();
+            testTickets.add(testTicket);
+        }
+
+
+        for (Ticket t : testTickets) {
+            String ticket_s = XmlCoder.code(t);
+            String testTicket_n = XmlCoder.code(XmlCoder.decode(ticket_s));
+            if (!ticket_s.equals(testTicket_n)) {
+                System.out.println("Ошибка кодирования/декодирования!");
+            }
+        }
+        */
+
+
+
+
 
         // чтение файла
         CollectionToFile.file_to_collection(collection, path);
